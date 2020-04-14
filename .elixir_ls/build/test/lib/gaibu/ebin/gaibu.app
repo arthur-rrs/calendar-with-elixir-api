@@ -1,6 +1,6 @@
 {application,gaibu,
-             [{applications,[kernel,stdlib,elixir,logger,jason,myxql,ecto_sql,
-                             plug_cowboy,guardian]},
+             [{applications,[kernel,stdlib,elixir,logger,jason,postgrex,myxql,
+                             ecto_sql,plug_cowboy,guardian,cors_plug]},
               {description,"gaibu"},
               {modules,['Elixir.Gaibu','Elixir.Gaibu.Application',
                         'Elixir.Gaibu.NeedAuthenticationRouter',

@@ -1,6 +1,6 @@
 defmodule Gaibu.Schema.User do
   use Ecto.Schema
-  @derive {Jason.Encoder, only: [:username, :name, :email, :is_active]}
+  @derive {Jason.Encoder, only: [:id, :username, :name, :email, :is_active]}
 
   schema "users" do
     field :username, :string

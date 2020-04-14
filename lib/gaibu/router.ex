@@ -1,7 +1,7 @@
 defmodule Gaibu.Router do
 
   use Plug.Router
-
+  plug CORSPlug, origin: ["*"], expose: ["x-token"]
   plug :match
   plug Plug.Parsers, parsers: [:urlencoded, :json],json_decoder: Jason
   plug :dispatch
@@ -42,7 +42,17 @@ defmodule Gaibu.Router do
     end
   end
 
+  get "/teste" do
+    IO.inspect(Mix.env())
+    ok(conn)
+  end
+
   forward "/api", to: Gaibu.NeedAuthenticationRouter
+
+  match _ do
+    not_found(conn)
+  end
+
   def prepare_error_response(errors) do
     errors |>
     Enum.map(fn value ->
@@ -70,6 +80,10 @@ defmodule Gaibu.Router do
     send_resp(conn, 409, Jason.encode!(body))
   end
 
+  def not_found(conn, body \\ "Opss.. Página não encontrada") do
+    send_resp(conn, 404, Jason.encode!(body) )
+  end
+
   def ok(conn, body \\ "") do
     send_resp(conn, 200, Jason.encode!(body))
   end
@@ -77,4 +91,5 @@ defmodule Gaibu.Router do
   def unauthorized(conn, body) do
     send_resp(conn, 401, body)
   end
+
 end

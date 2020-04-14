@@ -28,11 +28,23 @@ defmodule Gaibu.NeedAuthenticationRouter do
     Gaibu.Router.ok(conn)
   end
 
-  get "/myevents" do
+  delete "/event/:event_id" do
+    claims = Gaibu.Token.Plug.current_claims(conn)
+    {id, _} = Integer.parse(claims["sub"])
+    query = from(e in Gaibu.Schema.Event,
+    where: e.id == ^event_id,
+    where: e.user_id == ^id)
+    Gaibu.Repo.delete_all(query) |> IO.inspect()
+    Gaibu.Router.ok(conn)
+  end
+
+  get "/myevents/:firstdate/:lastdate" do
     claims = Gaibu.Token.Plug.current_claims(conn)
     {id, _} = Integer.parse(claims["sub"])
     query = from e in Gaibu.Schema.Event,
               where: e.user_id == ^id,
+              where: e.date_at >= ^firstdate,
+              where: e.date_at <= ^lastdate,
               select: e
     Gaibu.Router.ok(conn, Gaibu.Repo.all(query))
   end

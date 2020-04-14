@@ -1,6 +1,6 @@
 defmodule Gaibu.Schema.Event do
   use Ecto.Schema
-  @derive {Jason.Encoder, only: [:name, :date_at, :time_at, :description, :user_id]}
+  @derive {Jason.Encoder, only: [:id, :name, :date_at, :time_at, :description, :user_id]}
   schema "events" do
     field :name, :string
     field :date_at, :date

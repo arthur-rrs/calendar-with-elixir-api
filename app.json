@@ -1,0 +1,11 @@
+{
+  "name": "calendar-with-elixir-api",
+   "buildpacks": [
+    {
+      "url": "https://github.com/HashNuke/heroku-buildpack-elixir"
+    },
+    "env": {
+      "MIX_ENV": { "value": "prod"}
+    }
+  
+}

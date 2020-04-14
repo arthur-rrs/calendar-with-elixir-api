@@ -6,6 +6,7 @@ defmodule Gaibu.MixProject do
       app: :gaibu,
       version: "0.1.0",
       elixir: "~> 1.10",
+      config_path: "config/#{Mix.env()}.exs",
       start_permanent: Mix.env() == :prod,
       deps: deps()
     ]

@@ -23,3 +23,6 @@ erl_crash.dump
 gaibu-*.tar
 
 request.http
+
+config/dev.exs
+config/test.exs

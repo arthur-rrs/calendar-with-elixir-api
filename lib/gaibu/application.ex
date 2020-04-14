@@ -6,9 +6,11 @@ defmodule Gaibu.Application do
   use Application
 
   def start(_type, _args) do
+    sch = Application.fetch_env!(:gaibu, :http);
+    pt = Application.fetch_env!(:gaibu, :port)
     children = [
       Gaibu.Repo,
-      Plug.Cowboy.child_spec(scheme: :http, plug: Gaibu.Router, port: 4001)
+      Plug.Cowboy.child_spec(scheme: sch, plug: Gaibu.Router, port: pt)
       # Starts a worker by calling: Gaibu.Worker.start_link(arg)
       # {Gaibu.Worker, arg}
     ]

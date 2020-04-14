@@ -2,7 +2,7 @@ import Config
 
 config :gaibu, Gaibu.Repo,
   ssl: true,
-  url: System.get_env("DATABASE_URL"),
+  url: System.get_env("DATABASE_URL")
 
 config :gaibu, ecto_repos: [Gaibu.Repo]
 

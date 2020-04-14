@@ -5,6 +5,7 @@ defmodule Gaibu.Application do
 
   use Application
 
+  @spec start(any, any) :: {:error, any} | {:ok, pid}
   def start(_type, _args) do
     sch = Application.fetch_env!(:gaibu, :http);
     pt = Application.fetch_env!(:gaibu, :port)

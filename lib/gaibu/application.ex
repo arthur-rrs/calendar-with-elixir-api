@@ -9,6 +9,9 @@ defmodule Gaibu.Application do
   def start(_type, _args) do
     sch = Application.fetch_env!(:gaibu, :http)
     {pt, _} = Integer.parse(Application.fetch_env!(:gaibu, :port))
+    IO.inspect(pt)
+    IO.inspect(sch)
+    IO.inspect(Mix.env())
     sch = String.to_atom(sch)
     children = [
       Gaibu.Repo,

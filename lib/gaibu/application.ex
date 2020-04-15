@@ -13,7 +13,11 @@ defmodule Gaibu.Application do
     IO.inspect(pt)
     children = [
       Gaibu.Repo,
+<<<<<<< HEAD
       Plug.Cowboy.child_spec(scheme: String.to_atom(sch), plug: Gaibu.Router, options: [port: pt])
+=======
+      Plug.Cowboy.child_spec(scheme: sch, plug: Gaibu.Router, port: pt)
+>>>>>>> ef551b0d2e3a95dc1b9402bfe8c789c66164f08e
       # Starts a worker by calling: Gaibu.Worker.start_link(arg)
       # {Gaibu.Worker, arg}
     ]

@@ -11,5 +11,5 @@ config :gaibu, Gaibu.Token,
   secret_key: System.get_env("SECRET")
 
 config :gaibu,
-  port: System.get_env("PORT", 8080)
+  port: System.get_env("PORT", "8080")
   http: :http

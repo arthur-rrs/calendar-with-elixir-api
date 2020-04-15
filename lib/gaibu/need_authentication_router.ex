@@ -49,4 +49,8 @@ defmodule Gaibu.NeedAuthenticationRouter do
     Gaibu.Router.ok(conn, Gaibu.Repo.all(query))
   end
 
+  match _ do
+    Gaibu.Router.not_found(conn)
+  end
+
 end

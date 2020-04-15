@@ -80,7 +80,7 @@ defmodule Gaibu.Router do
     send_resp(conn, 409, Jason.encode!(body))
   end
 
-  def not_found(conn, body \\ "Opss.. Página não encontrada") do
+  def not_found(conn, body \\ "Opss.. Page not found!") do
     send_resp(conn, 404, Jason.encode!(body) )
   end
 

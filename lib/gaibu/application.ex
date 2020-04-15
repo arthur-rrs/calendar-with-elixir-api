@@ -13,7 +13,7 @@ defmodule Gaibu.Application do
     sch = String.to_atom(sch)
     children = [
       Gaibu.Repo,
-      Plug.Cowboy.child_spec(scheme: sch, plug: Gaibu.Router, port: pt)
+      {Plug.Cowboy, scheme: sch, plug: Gaibu.Router, options: [port: pt]}
     ]
     IO.inspect(children)
     # See https://hexdocs.pm/elixir/Supervisor.html

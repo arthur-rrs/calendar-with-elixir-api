@@ -9,11 +9,10 @@ defmodule Gaibu.Application do
   def start(_type, _args) do
     sch = Application.fetch_env!(:gaibu, :http)
     {pt, _} = Integer.parse(Application.fetch_env!(:gaibu, :port))
-    IO.inspect(sch)
-    IO.inspect(pt)
+    sch = String.to_atom(sch)
     children = [
       Gaibu.Repo,
-      Plug.Cowboy.child_spec(scheme: String.to_atom(sch), plug: Gaibu.Router, options: [port: pt])
+      Plug.Cowboy.child_spec(scheme: sch, plug: Gaibu.Router, options: [port: pt])
     ]
 
     # See https://hexdocs.pm/elixir/Supervisor.html

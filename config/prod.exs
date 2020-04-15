@@ -12,4 +12,4 @@ config :gaibu, Gaibu.Token,
 
 config :gaibu,
   port: System.get_env("PORT", "8080"),
-  http: :http
+  http: System.get_env("HTTP", "https")
